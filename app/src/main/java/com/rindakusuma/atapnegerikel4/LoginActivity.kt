@@ -22,6 +22,28 @@ class LoginActivity {
                 val username = etUsername.text.toString()
                 val password = etPassword.text.toString()
 
+                fun onRegisterClick(view: View) {
+                    // Buka aktivitas register
+                    val intent = Intent(this, RegisterActivity::class.java)
+                    startActivity(intent)
+                }
+
+                fun onLoginClick(view: View) {
+                    val username = etUsername.text.toString()
+                    val password = etPassword.text.toString()
+
+                    // Cek apakah user sudah login
+                    val firebaseUser = FirebaseAuth.getInstance().currentUser
+                    if (firebaseUser != null) {
+                        // User sudah login, lanjut ke activity utama
+                        finish()
+                    } else {
+                        // User belum login, lakukan login
+                        // ...
+                    }
+                }
+
+
 
                 if (username.isEmpty() || password.isEmpty()) {
                     Toast.makeText(this, "Registrasi sekarang!", Toast.LENGTH_SHORT)
